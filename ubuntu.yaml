@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ubuntu
+  labels:
+    app: ubuntu
+spec:
+  containers:
+  - name: ubuntu
+    image: ubuntu:16.04
+    #command: ["/bin/sleep", "3650d"]
+    command: ["/bin/sh","-c"]
+    args: 
+    - /usr/bin/apt-get update;
+      /usr/bin/apt-get install curl -y;
+      /bin/sleep 3650d
+    imagePullPolicy: IfNotPresent
