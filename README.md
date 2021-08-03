@@ -43,3 +43,25 @@ kubectl exec -it ubuntu -- /bin/bash
 curl hello-world:8000
 ```
 
+## Golang debugging
+
+dlv start as following:
+```
+ENV1=foo ETCD_ENDPOINT=test-etcd:2379 dlv debug --headless --listen=:1234 --api-version=2 main.go
+```
+
+Configuration
+```
+"configurations": [
+		{
+			"name": "attach debugger",
+      "type": "go",
+      "request": "attach",
+      "mode":"remote",
+      "port":1234,
+      "host":"127.0.0.1",
+      "remotePath": "${workspaceFolder}",
+		}
+	]
+```
+
